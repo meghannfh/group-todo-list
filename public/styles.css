@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Cambria", "Georgia", "Consolas";
+    font-size: 1em;
+    background: black;
+    color: seashell;
+}
+
+h1, h3{
+    text-align: center;
+    font-size: 1.5em;
+    color: seagreen;
+}
+
+h3{
+    font-size: 1.3em;
+    color: skyblue;
+}
+
+section, form{
+    display: flex;
+    text-align: center;
+    width: 40vh;
+    height: 40vh;
+    margin: auto;
+}
+
+button{
+    border: 3px solid seashell;
+    border-radius: 3px;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+}
