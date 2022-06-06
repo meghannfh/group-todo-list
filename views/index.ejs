@@ -11,21 +11,30 @@
 
 <section id="container">
     <section id="addaThing">
-        <h3>What are we up to today?</h3>
-        <form>
-            <label for="entry">What are we doin today?</label>
-            <input type="text" id="entry">Entry<br>
-        </form>
-        <button type="button">Add to list</button>
+        <form action="/todos" method="POST">
+            <input type="text" placeholder="Item to Do" name="todo">
+            <button type="submit" id="update-button">Submit</button>
+          </form>
     </section>
-    <section id="thingstodo">
 
-    </section>
 </section>
    
 <section id="deletion">
     <h2>It's so hard to say goodbye to yesterday</h2>
-    <button type="button">Incinerate</button>
+    <button type="button" id="delete-button">Incinerate</button>
+</section>
+
+<section class="todos">
+    <section data-position="todos">
+        <h2>What to</h2>
+        <ul class="todos">
+            <% for(var i = 0; i < todos.length; i++) {%>
+            <li class="todo">
+                <span class="listedTodo"><%= todos[i].todo %></span>
+            </li>
+            <% } %>
+        </ul>
+    </section>
 </section>
 
     

@@ -14,24 +14,40 @@ MongoClient.connect(connectionString, {
     console.log('Connected to Database')
     const db = client.db('todo-list')
     const todoCollection = db.collection('todos')
-    // app.set('view engine','ejs')
+    app.set('view engine', 'ejs')
     app.use(bodyParser.urlencoded({extended: true}))
-
-
     app.use(express.static('public'))
+    app.use(bodyParser.json())
+
     app.get('/', (req, res) => {
-      const cursor = db.collection('todos').find().toArray()
+      todoCollection.find().toArray()
       .then(results => {
-        console.log(results)
+        res.render('index.ejs', { todos: results })
       })
-      res.sendFile(__dirname + '/index.html')
+      .catch(error => {console.error(error)})
     })
+
     app.post('/todos', (req, res) => {
       todoCollection.insertOne(req.body)
       .then(result => {
         console.log(result)
+        res.redirect('/')
       })
       .catch(error => console.error(error))
+    })
+
+
+    app.delete('/todos',(req,res) => {
+        todoCollection.deleteOne(
+        {todos: req.body.todo}
+        )
+        .then(result => {
+            if (result.deletedCount === 0) {
+                return res.json('No event on schedule')
+              }
+            res.json("You have completed your tasks!")
+        })
+        .catch(error => console.error(error))
     })
 
     app.listen(PORT, ()=>{
@@ -40,63 +56,4 @@ MongoClient.connect(connectionString, {
   })
   .catch(error => console.error(error))
 
-
-
-//     app.set('view engine','ejs')
-//     app.use(bodyParser.urlencoded({extended: true}))
-//     app.use(express.static('public'))
-//     app.use(bodyParser.json())
-
-
-//     app.get('/', (req, res) => {
-//         quotesCollection.find().toArray()
-//             .then(results => {
-//                 console.log(results)
-//                 res.render('index.ejs',{quotes: results})
-
-//             })
-//             .catch(error => console.error(error))
-//       })
-//     app.post('/item', (req,res) =>{
-//         quotesCollection.insertOne(req.body)
-//             .then(result => {
-//                 console.log(result)
-//                 res.redirect('/')
-//             })
-//             .catch(error => console.error(error))
-//     })
-
-
-//     app.put('/item',(req,res) => {
-//         quotesCollection.findOneAndUpdate(
-//             // {name: 'Yoda'}, CHANGE 
-//             {
-//                 $set: {
-//                     name: req.body.name,
-//                     quote: req.body.quote
-//                 }
-//             },
-//             {
-//                 upsert: true
-//             }
-//         )
-//         .then(result => {
-//             console.log(result)
-//             res.json('Success')
-//         })
-//         .catch(error => console.error(error))
-//     })
-//     app.delete('/item',(req,res) => {
-//         quotesCollection.deleteOne(
-//         {name: req.body.name}
-//         )
-//         .then(result => {
-//             if (result.deletedCount === 0) {
-//                 return res.json('No event on schedule')
-//               }
-//             res.json("You have completed your tasks!")
-//         })
-//         .catch(error => console.log(error))
-//     })
-// })
 
