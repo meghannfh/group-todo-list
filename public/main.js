@@ -24,9 +24,9 @@ deleteButton.addEventListener('click', _ => {
         method: 'delete',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            /*We are trying to delete the most recently added item on our database. How do we delete it without specificying explicity the name of what we are deleting? 
-            The name changes each time we add something because it has a different object ID. */
-            todo: todos[0] 
+            /*We are trying to delete the most recently added item on our database. How do we delete it without specificying explicity the value of what we are deleting? 
+            The todo value will change based on what the user enters. */
+            todo: '', 
         })
     } )
     .then(res => {
