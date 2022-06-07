@@ -39,7 +39,7 @@ MongoClient.connect(connectionString, {
 
     app.delete('/todos',(req,res) => {
         todoCollection.deleteOne(
-        {todos: req.body.todo}
+          { todos : req.body.todo }
         )
         .then(result => {
             if (result.deletedCount === 0) {

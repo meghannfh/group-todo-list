@@ -23,11 +23,7 @@ deleteButton.addEventListener('click', _ => {
     fetch('/todos',{
         method: 'delete',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            /*We are trying to delete the most recently added item on our database. How do we delete it without specificying explicity the value of what we are deleting? 
-            The todo value will change based on what the user enters. */
-            todo: '', //<--what do we add here?
-        })
+        body: JSON.stringify({})
     } )
     .then(res => {
         if(res.ok) return res.json()
