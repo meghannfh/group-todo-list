@@ -4,29 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>J-list</h1>
+    <h1>Get it done!</h1>
 
 <section id="container">
-    <section id="addaThing">
         <form action="/todos" method="POST">
-            <input type="text" placeholder="Item to Do" name="todo">
-            <button type="submit" id="update-button">Submit</button>
+            <input type="text" placeholder=" Event" name="todo">
+            <button type="submit" id="update-button" class="button-19" role="button">Submit</button>
           </form>
-    </section>
-
-</section>
-   
-<section id="deletion">
-    <h2>It's so hard to say goodbye to yesterday</h2>
-    <button type="button" id="delete-button">Delete</button>
 </section>
 
-<section class="todos">
-    <section data-position="todos">
-        <h2>What to</h2>
+<section class="todosSection">
+        <h2>AGENDA</h2>
         <ul class="todos">
             <% for(var i = 0; i < todos.length; i++) {%>
             <li class="todo">
@@ -34,7 +26,10 @@
             </li>
             <% } %>
         </ul>
-    </section>
+</section>
+
+<section id="deletion">
+        <button type="button" id="delete-button" class="button-19" role="button">Delete</button>
 </section>
 
     
