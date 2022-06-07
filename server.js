@@ -5,7 +5,7 @@ const PORT = 5000
 
 const MongoClient = require('mongodb').MongoClient
 
-const connectionString = 'mongodb+srv://meg:nagaI2021@cluster0.hkmfzai.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = 'mongodb+srv://meg:[password]@cluster0.hkmfzai.mongodb.net/?retryWrites=true&w=majority'
 
 MongoClient.connect(connectionString, {
     useUnifiedTopology: true
