@@ -43,7 +43,7 @@ MongoClient.connect(connectionString, {
         )
         .then(result => {
             if (result.deletedCount === 0) {
-                return res.json('No event on schedule')
+                return res.json('No task to delete')
               }
             res.json("You have completed your tasks!")
         })
