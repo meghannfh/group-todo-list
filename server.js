@@ -28,7 +28,7 @@ MongoClient.connect(connectionString, {
     })
 
     app.post('/todos', (req, res) => {
-      todoCollection.insertOne(req.body)
+      todoCollection.insertOne(req.body.todo)
       .then(result => {
         console.log(result)
         res.redirect('/')

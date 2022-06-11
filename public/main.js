@@ -18,6 +18,28 @@ update.addEventListener('click', _ => {
     })
 })
 
+// deleteButton.addEventListener('click', deleteTodo)
+
+// async function deleteTodo(){
+//     const tName = this.parentNode.childNodes[1].innerText
+//     try{
+//         const response = await fetch('deleteTodo', {
+//             //need to change the path in app.delete in server.js
+//             //to /deleteTodo 
+//             method: 'delete',
+//             headers: {'Content-Type': 'application/json'},
+//             body: JSON.stringify({
+//                 todo: tName
+//             })
+//         })
+//         const data = await response.json()
+//         console.log(data)
+//         location.reload()
+//     }catch(err){
+//         console.error(err)
+//     }
+// }
+
 
 deleteButton.addEventListener('click', _ => {
     fetch('/todos',{
