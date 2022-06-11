@@ -3,9 +3,11 @@ const bodyParser= require('body-parser')
 const app = express()
 const PORT = 5000
 
+
+
 const MongoClient = require('mongodb').MongoClient
 
-const connectionString = 'mongodb+srv://meg:[password]@cluster0.hkmfzai.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = 'mongodb+srv://meg:sdHm2yx0vcS34Vom@cluster0.hkmfzai.mongodb.net/?retryWrites=true&w=majority'
 
 MongoClient.connect(connectionString, {
     useUnifiedTopology: true
@@ -28,7 +30,7 @@ MongoClient.connect(connectionString, {
     })
 
     app.post('/todos', (req, res) => {
-      todoCollection.insertOne(req.body.todo)
+      todoCollection.insertOne(req.body)
       .then(result => {
         console.log(result)
         res.redirect('/')
