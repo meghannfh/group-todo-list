@@ -1,13 +1,20 @@
-const express = require('express')
-const bodyParser= require('body-parser')
+import express, { json } from 'express'
+import cors from 'cors'
+import { MongoClient } from 'mongodb'
+import { urlencoded } from 'body-parser'
+require('dotenv').config()
 const app = express()
 const PORT = 5000
 
+app.set('view enginve', 'ejs')
+app.use(express.static('public'))
 
+app.use(cors())
+app.use(urlencoded({ extended: true }))
+app.use(json())
 
-const MongoClient = require('mongodb').MongoClient
+let connectionString = process.env.DB_STRING
 
-const connectionString = 'mongodb+srv://meg:sdHm2yx0vcS34Vom@cluster0.hkmfzai.mongodb.net/?retryWrites=true&w=majority'
 
 MongoClient.connect(connectionString, {
     useUnifiedTopology: true
@@ -16,10 +23,6 @@ MongoClient.connect(connectionString, {
     console.log('Connected to Database')
     const db = client.db('todo-list')
     const todoCollection = db.collection('todos')
-    app.set('view engine', 'ejs')
-    app.use(bodyParser.urlencoded({extended: true}))
-    app.use(express.static('public'))
-    app.use(bodyParser.json())
 
     app.get('/', (req, res) => {
       todoCollection.find().toArray()
