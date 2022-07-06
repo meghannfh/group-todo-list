@@ -6,7 +6,7 @@ require('dotenv').config()
 const app = express()
 const PORT = 5000
 
-app.set('view enginve', 'ejs')
+app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.use(cors())
